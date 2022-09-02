@@ -1,4 +1,4 @@
-package com.mano.holyquran;
+package com.mano.theholyqran;
 
 import org.junit.Test;
 

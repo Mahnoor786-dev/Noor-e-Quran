@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Desktop/semester-6/MobileComputing/AndroidStudioProjects/HolyQuran/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Desktop/semester-6/MobileComputing/AndroidStudioProjects/TheHolyQran/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
+        <entry key="..\:/Desktop/semester-6/MobileComputing/AndroidStudioProjects/TheHolyQran/app/src/main/res/layout/content_main.xml" value="0.17074275362318841" />
+        <entry key="..\:/Desktop/semester-6/MobileComputing/AndroidStudioProjects/TheHolyQran/app/src/main/res/menu/activity_main_drawer.xml" value="0.1835897435897436" />
+        <entry key="..\:/Desktop/semester-6/MobileComputing/AndroidStudioProjects/TheHolyQran/app/src/main/res/menu/main.xml" value="0.18645833333333334" />
       </map>
     </option>
   </component>
