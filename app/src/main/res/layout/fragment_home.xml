@@ -7,12 +7,61 @@
     android:background="@drawable/home_bg"
     tools:context=".ui.home.HomeFragment">
 
-    <ListView
-        android:id="@+id/home"
-        android:layout_width="300dp"
-        android:layout_height="500dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <Button
+        android:id="@+id/search"
+        android:layout_width="230dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="188dp"
+        android:backgroundTint="#3C202335"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/menu_para"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/parah"
+        android:layout_width="230dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="284dp"
+        android:backgroundTint="#3C202335"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/menu_surah"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/surah"
+        android:layout_width="230dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="384dp"
+        android:backgroundTint="#3C202335"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/menu_search"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/know"
+        android:layout_width="230dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="480dp"
+        android:backgroundTint="#3C202335"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/menu_know"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
