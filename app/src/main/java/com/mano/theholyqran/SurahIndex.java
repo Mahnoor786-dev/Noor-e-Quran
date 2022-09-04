@@ -2,7 +2,10 @@ package com.mano.theholyqran;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -21,5 +24,15 @@ public class SurahIndex extends AppCompatActivity {
         ViewAdapter adapter = new ViewAdapter(this, SurahIndexes);
         surahListView = findViewById(R.id.surahList);
         surahListView.setAdapter(adapter);
+
+        surahListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parentView, View view, int position, long l) {
+                // show the selected surah
+                Index selectedSurah = (Index) parentView.getItemAtPosition(position);
+                Intent intent = new Intent(SurahIndex.this, surahView.class);
+                intent.putExtra("id", selectedSurah.getId());
+            }
+        });
     }
 }

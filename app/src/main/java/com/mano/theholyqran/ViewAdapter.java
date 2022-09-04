@@ -24,11 +24,15 @@ public class ViewAdapter extends ArrayAdapter<Index> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_index_list_view, parent, false);
         }
         // according to the position of the view assign the desired surah name in ENGLISH
-        TextView surahNameEnglish = convertView.findViewById(R.id.surahNameEnglish);
+        TextView surahNameEnglish = convertView.findViewById(R.id.NameEnglish);
         surahNameEnglish.setText(surahIndex.getNameEnglish());
          // assign the desired surah index name in URDU
-        TextView surahNameUrdu = convertView.findViewById(R.id.surahNameUrdu);
+        TextView surahNameUrdu = convertView.findViewById(R.id.NameUrdu);
         surahNameUrdu.setText( surahIndex.getNameUrdu());
+
+        TextView surahId = convertView.findViewById(R.id.ID);
+        String s = Integer.toString(surahIndex.getId());
+        surahId.setText(s);
         return convertView;
     }
 }

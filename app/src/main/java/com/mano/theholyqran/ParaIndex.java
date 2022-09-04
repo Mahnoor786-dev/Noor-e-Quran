@@ -23,7 +23,7 @@ public class ParaIndex extends AppCompatActivity {
         para = new ParahNames();
         for (int i = 0; i < 30; i++)
         {
-            Index paraa = new Index(para.UrduParahName[i], para.englishParahName[i]);
+            Index paraa = new Index(i+1, para.UrduParahName[i], para.englishParahName[i]);
             paraNames.add(paraa);
         }
         ViewAdapter adapter = new ViewAdapter(this, paraNames);
