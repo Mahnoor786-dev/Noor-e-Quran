@@ -19,12 +19,12 @@ public class ParaIndex extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_para_index);
-
-        String[]  paraEnglishNames = para.getEnglishParahName(); //get para English names
-        String[] paraUrduNames = para.getUrduParahName();
-        for (int i = 1; i < 31; i++)
+        paraNames = new ArrayList<Index>();
+        para = new ParahNames();
+        for (int i = 0; i < 30; i++)
         {
-            paraNames.add(new Index(paraUrduNames[i], paraEnglishNames[i]));
+            Index paraa = new Index(para.UrduParahName[i], para.englishParahName[i]);
+            paraNames.add(paraa);
         }
         ViewAdapter adapter = new ViewAdapter(this, paraNames);
         parahListView = findViewById(R.id.paraList);

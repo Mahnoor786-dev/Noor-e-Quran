@@ -6,16 +6,20 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class SurahIndex extends AppCompatActivity {
+import java.util.ArrayList;
 
+public class SurahIndex extends AppCompatActivity {
+    DatabaseHelper db;
+    ListView surahListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_surah_index);
-
-        // ArrayList<Index> paraIndexes = db.getSurahNames();
-
-
+        db = new DatabaseHelper(SurahIndex.this);
+        ArrayList<Index> SurahIndexes = db.getSurahIndex();
+        ViewAdapter adapter = new ViewAdapter(this, SurahIndexes);
+        surahListView = findViewById(R.id.surahList);
+        surahListView.setAdapter(adapter);
     }
 }
