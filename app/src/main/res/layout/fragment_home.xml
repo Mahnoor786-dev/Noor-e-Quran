@@ -8,59 +8,58 @@
     tools:context=".ui.home.HomeFragment">
 
     <Button
-        android:id="@+id/search"
-        android:layout_width="230dp"
+        android:id="@+id/parah"
+        android:layout_width="232dp"
         android:layout_height="75dp"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="184dp"
         android:backgroundTint="#3C202335"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="@string/menu_para"
-        android:textSize="26sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/parah"
-        android:layout_width="230dp"
+        android:id="@+id/surah"
+        android:layout_width="232dp"
         android:layout_height="75dp"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="276dp"
         android:backgroundTint="#3C202335"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="@string/menu_surah"
-        android:textSize="26sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <Button
-        android:id="@+id/surah"
-        android:layout_width="230dp"
+        android:id="@+id/search"
+        android:layout_width="232dp"
         android:layout_height="75dp"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="384dp"
+        android:layout_marginTop="368dp"
         android:backgroundTint="#3C202335"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="@string/menu_search"
-        android:textSize="26sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/know"
-        android:layout_width="230dp"
+        android:layout_width="232dp"
         android:layout_height="75dp"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="480dp"
+        android:layout_marginTop="460dp"
         android:backgroundTint="#3C202335"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="@string/menu_know"
-        android:textSize="26sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

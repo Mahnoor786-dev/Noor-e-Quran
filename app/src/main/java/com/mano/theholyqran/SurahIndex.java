@@ -1,27 +1,21 @@
 package com.mano.theholyqran;
 
-public class SurahIndex {
-    private String nameUrdu;
-    private String nameEnglish;
+import androidx.appcompat.app.AppCompatActivity;
 
-    public SurahIndex(String nameUrdu, String nameEnglish) {
-        this.nameUrdu = nameUrdu;
-        this.nameEnglish = nameEnglish;
-    }
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-    public String getNameUrdu() {
-        return nameUrdu;
-    }
+public class SurahIndex extends AppCompatActivity {
 
-    public void setNameUrdu(String nameUrdu) {
-        this.nameUrdu = nameUrdu;
-    }
 
-    public String getNameEnglish() {
-        return nameEnglish;
-    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_surah_index);
 
-    public void setNameEnglish(String nameEnglish) {
-        this.nameEnglish = nameEnglish;
+        // ArrayList<Index> paraIndexes = db.getSurahNames();
+
+
     }
 }
