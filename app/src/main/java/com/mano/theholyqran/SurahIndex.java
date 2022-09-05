@@ -31,7 +31,8 @@ public class SurahIndex extends AppCompatActivity {
                 // show the selected surah
                 Index selectedSurah = (Index) parentView.getItemAtPosition(position);
                 Intent intent = new Intent(SurahIndex.this, surahView.class);
-                intent.putExtra("id", selectedSurah.getId());
+                intent.putExtra("surahId", selectedSurah.getId());
+                startActivity(intent);
             }
         });
     }

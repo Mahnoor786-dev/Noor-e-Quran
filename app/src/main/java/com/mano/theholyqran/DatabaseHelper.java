@@ -5,7 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
+import androidx.core.database.sqlite.SQLiteDatabaseKt;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper
@@ -43,12 +45,32 @@ public class DatabaseHelper extends SQLiteOpenHelper
                 surahList.add(currentSurah);
             }while (cursor.moveToNext());
         }
-        else {
-        }
         cursor.close();
         db.close();
         return surahList;
     }
 
+
+    public ArrayList<Ayat> getSurahAyats(int surahNumber)
+    {
+        ArrayList<Ayat> surahAyats = new ArrayList<Ayat>();
+        String queryString = "SELECT ArabicText, MehmoodulHassan, DrMohsinKhan FROM tayah WHERE SuraID = " + surahNumber ;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+        if(cursor.moveToFirst())
+        {
+            do{
+                String ayatArabic = cursor.getString(0);
+                String translationU = cursor.getString(1);
+                String translationE = cursor.getString(2);
+                Ayat ayatSet = new Ayat(ayatArabic, translationE, translationU);
+                surahAyats.add(ayatSet);
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return surahAyats;
+    }
 
 }
