@@ -50,8 +50,6 @@ public class DatabaseHelper extends SQLiteOpenHelper
         return surahList;
     }
 
-
-
     public ArrayList<Ayat> getSurahAyats(int collectionNumber, String collectiontype) //collection represents whether its a parah or a surah
     {
         ArrayList<Ayat> surahAyats = new ArrayList<Ayat>();
@@ -82,5 +80,21 @@ public class DatabaseHelper extends SQLiteOpenHelper
         db.close();
         return surahAyats;
     }
+
+    public int getSurahId(String surahName) //get surah Id by its name
+    {
+        String queryString = "SELECT SurahID FROM tsurah WHERE SurahNameU = " + surahName;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+        int surahId=1;
+        if(cursor.moveToFirst())
+        {
+            surahId  = cursor.getInt(0);
+        }
+        cursor.close();
+        db.close();
+        return surahId;
+    }
+
 
 }

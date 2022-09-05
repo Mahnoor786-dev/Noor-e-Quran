@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Button surahBtn;
     Button searchBtn;
     Button knowMore;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +43,17 @@ public class MainActivity extends AppCompatActivity {
             Dialog dialog = new Dialog(MainActivity.this);
             dialog.setContentView(R.layout.activity_search_popup);
             // dialog.setCancelable(false);
-            Button search = dialog.findViewById(R.id.searchbutton); //find button that exists within dialog view
-            Button dismiss = dialog.findViewById(R.id.dismiss); //find button that exists within dialog view
+            Button search = dialog.findViewById(R.id.searchbutton); //find search button that exists within dialog view
+            Button dismiss = dialog.findViewById(R.id.dismiss);
+            EditText nameField = dialog.findViewById(R.id.surahName);
+            String surahName = nameField.getText().toString();
             dialog.show();
             search.setOnClickListener(view1 -> {
-                intent = new Intent(MainActivity.this, KnowMore.class);
+                intent = new Intent(MainActivity.this, surahView.class);
+                int surahId = getSurahId(surahName);
+                intent.putExtra("surahId", surahId);
+                intent.putExtra("surahName", surahName);
+                intent.putExtra("isSurah", 1);
                 MainActivity.this.startActivity(intent);
             });
             dismiss.setOnClickListener(view2 -> {
@@ -57,7 +66,13 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
          });
 
+    }
 
+    public int getSurahId(String name){
+        int surahId = 0;
+        db = new DatabaseHelper(MainActivity.this);
+        surahId =  db.getSurahId(name);
+        return surahId;
     }
 
 }

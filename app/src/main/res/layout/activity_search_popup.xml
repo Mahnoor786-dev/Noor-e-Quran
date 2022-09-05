@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     tools:context=".search_popup">
 
-
     <TextView
         android:id="@+id/popupTitle"
         android:layout_width="match_parent"
@@ -36,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/surahName"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -52,8 +51,9 @@
         android:id="@+id/searchbutton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="256dp"
+        android:layout_marginStart="268dp"
         android:layout_marginTop="156dp"
+        android:layout_marginEnd="26dp"
         android:layout_weight="1"
         android:backgroundTint="#FFFFFF"
         android:text="search"
