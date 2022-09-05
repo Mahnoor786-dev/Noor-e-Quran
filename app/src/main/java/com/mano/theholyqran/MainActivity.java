@@ -1,5 +1,6 @@
 package com.mano.theholyqran;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +35,22 @@ public class MainActivity extends AppCompatActivity {
             intent = new Intent(MainActivity.this, SurahIndex.class);
             startActivity(intent);
         });
+
+        searchBtn.setOnClickListener(view -> {
+            Dialog dialog = new Dialog(MainActivity.this);
+            dialog.setContentView(R.layout.activity_search_popup);
+            // dialog.setCancelable(false);
+            Button search = dialog.findViewById(R.id.searchbutton); //find button that exists within dialog view
+            Button dismiss = dialog.findViewById(R.id.dismiss); //find button that exists within dialog view
+            dialog.show();
+            search.setOnClickListener(view1 -> {
+                intent = new Intent(MainActivity.this, KnowMore.class);
+                MainActivity.this.startActivity(intent);
+            });
+            dismiss.setOnClickListener(view2 -> {
+                dialog.dismiss();
+            });
+         });
 
         knowMore.setOnClickListener(view -> {
             intent = new Intent(MainActivity.this, KnowMore.class);
