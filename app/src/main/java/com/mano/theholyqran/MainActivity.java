@@ -35,8 +35,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-         searchBtn.setOnClickListener(view -> {
-
+        knowMore.setOnClickListener(view -> {
+            intent = new Intent(MainActivity.this, KnowMore.class);
+            startActivity(intent);
          });
 
 
