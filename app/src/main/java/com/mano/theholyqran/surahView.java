@@ -1,6 +1,8 @@
 package com.mano.theholyqran;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +13,11 @@ import java.util.ArrayList;
 
 public class surahView extends AppCompatActivity {
         ArrayList<Ayat> surah;
-        ListView surahListView;
-        DatabaseHelper db;
+      //  ListView surahListView;
+    RecyclerView surahListView;
+    RecyclerView.LayoutManager layoutManager;
+    RecyclerView.Adapter adapter;
+    DatabaseHelper db;
         TextView title;
 
     @Override
@@ -47,10 +52,13 @@ public class surahView extends AppCompatActivity {
         db = new DatabaseHelper(surahView.this);
         surah = db.getSurahAyats(id, collectionType);
 
-        AyatAdapter adapter = new AyatAdapter(this, surah);
+       // AyatAdapter adapter = new AyatAdapter(this, surah);
+       // surahListView.setAdapter(adapter);
         surahListView = findViewById(R.id.surah);
+        surahListView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(surahView.this);
+        surahListView.setLayoutManager(layoutManager);
+        adapter = new AyatListAdapter(surah) ;
         surahListView.setAdapter(adapter);
-
-
     }
 }
