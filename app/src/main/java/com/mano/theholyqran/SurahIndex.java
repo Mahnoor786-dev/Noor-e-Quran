@@ -32,7 +32,7 @@ public class SurahIndex extends AppCompatActivity {
                 Index selectedSurah = (Index) parentView.getItemAtPosition(position);
                 Intent intent = new Intent(SurahIndex.this, surahView.class);
                 intent.putExtra("surahId", selectedSurah.getId());
-                String surahName=  selectedSurah.getId() + "- " + selectedSurah.getNameUrdu();
+                String surahName= selectedSurah.getId() + "- " +  " سورة " + selectedSurah.getNameUrdu();
                 intent.putExtra("surahName", surahName);
                 intent.putExtra("isSurah", 1);
                 startActivity(intent);
