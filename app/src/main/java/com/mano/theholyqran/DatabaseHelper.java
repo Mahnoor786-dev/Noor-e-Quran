@@ -51,10 +51,20 @@ public class DatabaseHelper extends SQLiteOpenHelper
     }
 
 
-    public ArrayList<Ayat> getSurahAyats(int surahNumber)
+
+    public ArrayList<Ayat> getSurahAyats(int collectionNumber, String collectiontype) //collection represents whether its a parah or a surah
     {
         ArrayList<Ayat> surahAyats = new ArrayList<Ayat>();
-        String queryString = "SELECT ArabicText, MehmoodulHassan, DrMohsinKhan FROM tayah WHERE SuraID = " + surahNumber ;
+        String idType="";
+        if(collectiontype.equals("surah"))
+        {
+            idType="SuraID";
+        }
+        else
+        {
+            idType= "ParaID";
+        }
+        String queryString = "SELECT ArabicText, MehmoodulHassan, DrMohsinKhan FROM tayah WHERE " + idType +  " = " + collectionNumber ;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString, null);
         if(cursor.moveToFirst())
