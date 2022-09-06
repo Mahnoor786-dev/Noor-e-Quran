@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -12,13 +13,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class surahView extends AppCompatActivity {
-        ArrayList<Ayat> surah;
+    ArrayList<Ayat> surah;
       //  ListView surahListView;
     RecyclerView surahListView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
     DatabaseHelper db;
-        TextView title;
+    TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

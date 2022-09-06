@@ -31,7 +31,7 @@ public class ViewAdapter extends ArrayAdapter<Index> {
         surahNameUrdu.setText( surahIndex.getNameUrdu());
 
         TextView surahId = convertView.findViewById(R.id.ID);
-        String s = Integer.toString(surahIndex.getId());
+        String s = Integer.toString(surahIndex.getId())+"-";
         surahId.setText(s);
         return convertView;
     }

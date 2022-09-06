@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     tools:context=".ayat_list_view">
 
-
     <LinearLayout
         android:id="@+id/ayatRow"
         android:layout_width="match_parent"
@@ -16,29 +15,37 @@
         android:layout_marginTop="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" >
 
         <TextView
             android:id="@+id/ayatArabic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
+            android:fontFamily="@font/noorehuda"
+            android:textColor="#000830"
+            android:textSize="27sp"
+            android:textStyle="bold"
             app:layout_wrapBehaviorInParent="horizontal_only" />
-
 
         <TextView
             android:id="@+id/translationU"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="4dp"
+            android:textColor="#151A35"
+            android:textSize="24sp"
+            android:fontFamily="@font/jameelnoorinastaleeq"
             app:layout_wrapBehaviorInParent="horizontal_only" />
 
         <TextView
             android:id="@+id/translationE"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
+            android:textColor="#151A35"
+            android:textSize="18sp"
             app:layout_wrapBehaviorInParent="horizontal_only" />
 
         <View
@@ -46,6 +53,5 @@
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"/>
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
