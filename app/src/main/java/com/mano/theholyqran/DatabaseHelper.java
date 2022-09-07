@@ -184,15 +184,17 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     public int getSurahId(String surahName) //get surah Id by its name
     {
-        String queryString = "SELECT SurahID FROM tsurah WHERE SurahNameU = " + surahName;
+        Log.d("surahName Db: " , surahName);
+        String queryString = "SELECT SurahID FROM tsurah WHERE SurahID =" + surahName;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(queryString, null);
-        int surahId=1;
-        if(cursor.moveToFirst())
-        {
-            surahId  = cursor.getInt(0);
+        //try catch here
+        int surahId = 1;
+        try (Cursor cursor = db.rawQuery(queryString, null)) {
+            if (cursor.moveToFirst()) {
+                surahId = cursor.getInt(0);
+            }
+            cursor.close();
         }
-        cursor.close();
         db.close();
         return surahId;
     }
