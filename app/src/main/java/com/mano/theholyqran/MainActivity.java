@@ -44,18 +44,15 @@ public class MainActivity extends AppCompatActivity {
             Dialog dialog = new Dialog(MainActivity.this);
             dialog.setContentView(R.layout.activity_search_popup);
             // dialog.setCancelable(false);
+            dialog.show();
             Button search = dialog.findViewById(R.id.searchbutton); //find search button that exists within dialog view
             Button dismiss = dialog.findViewById(R.id.dismiss);
-            EditText nameField = (EditText)dialog.findViewById(R.id.surahName);
-            String surahName = nameField.getText().toString();
-            Log.d("surahName main: " , surahName);
-            dialog.show();
             search.setOnClickListener(view1 -> {
+                EditText nameField = (EditText)dialog.findViewById(R.id.surahName);
+                String searchItem = nameField.getText().toString();
                 intent = new Intent(MainActivity.this, surahView.class);
-                int surahId = getSurahId(surahName);
-                intent.putExtra("surahId", surahId);
-                intent.putExtra("surahName", surahName);
-                intent.putExtra("isSurah", 1);
+                intent.putExtra("isSearchResult", 1); //when the intent is from search request
+                intent.putExtra("searchedVerse", searchItem);
                 MainActivity.this.startActivity(intent);
             });
             dismiss.setOnClickListener(view2 -> {
@@ -68,13 +65,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
          });
 
-    }
-
-    public int getSurahId(String name){
-        int surahId = 0;
-        db = new DatabaseHelper(MainActivity.this);
-        surahId =  db.getSurahId(name);
-        return surahId;
     }
 
 }

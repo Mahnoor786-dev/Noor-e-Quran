@@ -33,28 +33,37 @@ public class surahView extends AppCompatActivity {
         String paraName = intent.getStringExtra("paraName");
         int surahId = intent.getIntExtra("surahId", 1);
         String surahName = intent.getStringExtra("surahName");
+        String searchedVerse = intent.getStringExtra("searchedVerse");
+        int isSearchResult = intent.getIntExtra("isSearchResult", 0);
+
         int id=0;
         String collectionType="";
         title=findViewById(R.id.title);
-
-        if(isPara==1) //if the intent to start new activity is from paraIndex activity, show ayats by para number
-        {
-          id=paraId;
-          collectionType="para";
-          title.setText(paraName);
+         if(isSearchResult==1) //get list of ayahs if intent is from search result
+         {
+             title.setText("Searched: " + searchedVerse);
+             db = new DatabaseHelper(surahView.this);
+             surah = db.searchVerse(searchedVerse);
         }
-        else if(isSurah==1) //if the intent to start new activity is from surah Index activity, show ayats by surah number
-        {
-            id=surahId;
-            collectionType="surah";
-            title.setText(surahName);
-        }
+         else {  //get surah or parah if intent is from surah index or parah index respectively
 
-        db = new DatabaseHelper(surahView.this);
-        surah = db.getSurahAyats(id, collectionType);
+             if (isPara == 1) //if the intent to start new activity is from paraIndex activity, show ayats by para number
+             {
+                 id = paraId;
+                 collectionType = "para";
+                 title.setText(paraName);
+             } else if (isSurah == 1) //if the intent to start new activity is from surah Index activity, show ayats by surah number
+             {
+                 id = surahId;
+                 collectionType = "surah";
+                 title.setText(surahName);
+             }
 
-       // AyatAdapter adapter = new AyatAdapter(this, surah);
-       // surahListView.setAdapter(adapter);
+             db = new DatabaseHelper(surahView.this);
+             surah = db.getSurahAyats(id, collectionType);
+         }
+
+         //set the recycler view with the arrayList got from query
         surahListView = findViewById(R.id.surah);
         surahListView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(surahView.this);

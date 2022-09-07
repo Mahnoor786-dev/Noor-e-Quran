@@ -7,14 +7,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.core.database.sqlite.SQLiteDatabaseKt;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper
@@ -182,21 +180,52 @@ public class DatabaseHelper extends SQLiteOpenHelper
         return surahAyats;
     }
 
-    public int getSurahId(String surahName) //get surah Id by its name
+    public ArrayList<Integer> getIds(String searchedVerse) //get para id and ayat id of searched verse
     {
-        Log.d("surahName Db: " , surahName);
-        String queryString = "SELECT SurahID FROM tsurah WHERE SurahID =" + surahName;
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        String pattern = "'%" + searchedVerse + "%'";
+        String queryString = "SELECT AyaID, ParaID from tayah WHERE DrMohsinKhan LIKE " + pattern + " LIMIT 1" ;
         SQLiteDatabase db = this.getReadableDatabase();
-        //try catch here
-        int surahId = 1;
+        int paraId =0, ayatId =0 ;
         try (Cursor cursor = db.rawQuery(queryString, null)) {
             if (cursor.moveToFirst()) {
-                surahId = cursor.getInt(0);
+                ayatId = cursor.getInt(0);
+                paraId = cursor.getInt(1);
             }
             cursor.close();
         }
+        ids.add(ayatId);
+        ids.add(paraId);
+        return ids;
+    }
+
+
+    public ArrayList<Ayat> searchVerse(String searchedVerse) //get surah Id by its name
+    {
+        //get para id and ayat id of searched verse to get Ayats
+        ArrayList<Integer> ids = getIds(searchedVerse);
+        Integer ayatId = ids.get(0);
+        Integer paraId = ids.get(1);
+
+        //get ayats related to search result
+        ArrayList<Ayat> ayats = new ArrayList<Ayat>();
+        String queryString = "SELECT ArabicText, MehmoodulHassan, DrMohsinKhan FROM tayah WHERE ParaID == " + paraId +" AND AyaID >= " + ayatId ;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+        if(cursor.moveToFirst())
+        {
+            do{
+                String ayatArabic = cursor.getString(0);
+                String translationU = cursor.getString(1);
+                String translationE = cursor.getString(2);
+                Ayat ayatSet = new Ayat(ayatArabic, translationE, translationU);
+                ayats.add(ayatSet);
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
         db.close();
-        return surahId;
+        return ayats;
     }
 
 }
